@@ -18,7 +18,15 @@ class App extends Component {
       
       if (response.status === 200) {
         //proceed...
-        this.setState({books: response.data})
+        this.setState({
+          books: response.data.map( book =>{
+            return{
+              ...book,
+              total : 0,
+          }
+          }),
+          totalCheckout: 0
+        })
       }
       else {
         // throw error and go to catch block
@@ -34,11 +42,30 @@ class App extends Component {
     this.setState( prevState => {
       return {
           ...prevState,
-          books: prevState.books.map( book => book.id === newItem.id ? {...book, inCart: true}: book)
+          books: prevState.books.map( book => book.id === newItem.id ? {...book, inCart: true, total: parseInt(book.total) + 1}: book)
           }
       })
   }
 
+  handlerUpdateQ = (num, item) =>{
+  
+    this.setState( prevState => {
+      return {
+          ...prevState,
+          books: prevState.books.map( book => book.id === item ? {...book, total: num}: book),
+          }
+      })
+  }
+
+  handlerRemoveFromCart = (id) =>{
+    console.log(id)
+    this.setState( prevState => {
+      return {
+          ...prevState,
+          books: prevState.books.map( book => book.id === id ? {...book, inCart: false, total: 0}: book)
+          }
+      })
+  }
 
   render() { 
     return (
@@ -50,8 +77,8 @@ class App extends Component {
              <Search />
               <Main books={this.state.books} AddToCart={this.handlerAddToCart} />
            </div>
-            <div className="col-md-4">
-                <Cart booksv={this.state.books}/>
+            <div className="col-md-4 cart-container-app">
+                <Cart books={this.state.books} handlerRemoveFromCart={this.handlerRemoveFromCart} totalCheckout={this.state.totalCheckout} handlerUpdateQ={this.handlerUpdateQ}/>
             </div>
           </div>
         </div>

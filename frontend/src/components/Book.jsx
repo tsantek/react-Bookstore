@@ -9,6 +9,9 @@ const Book = ({book, AddToCart}) =>{
         return  AddToCart(book);
     }
 
+    const styleColor = '#007bff';
+
+
     return (
         <div className="col-sm-6 book-item-container">
             <div className="card">
@@ -17,10 +20,11 @@ const Book = ({book, AddToCart}) =>{
                     <p className="card-text"><b>{book.subtitle}</b></p>
                     <p className="card-text">{book.Author}</p>
                     <p className="card-text">{book.description}</p>
-                    <p className="card-text">Published: {convertedDate} by {book.publisher}</p>
+                    <a href={book.website} target="__blank" className="card-text"><span style={{color:'black'}}>Web:</span> {book.website}</a>
+                    <p className="card-text published">Published: {convertedDate} by {book.publisher}</p>
                     <p>Pages: ${book.pages}</p>
                     <p>Price: <b>${book.price}</b></p>
-                    <button style={{float:"right"}} onClick={AddToCartFunction} className="btn btn-primary">Add to Cart</button>
+                    <button style={{float:"right", backgroundColor: styleColor}} onClick={AddToCartFunction} className="btn btn-primary">{!book.inCart ? 'Add to Cart' : 'In Cart' }</button>
                 </div>
             </div>
         </div>

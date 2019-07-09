@@ -22,3 +22,29 @@ header {
 .book-item-container {
     padding: 10px;
 }
+
+.card-body .published {
+    padding-top: 10px;
+}
+
+
+/* CART */
+
+.cart {
+    /* position: fixed; */
+    padding-top: 30px;
+}
+
+.cart-item {
+    padding: 5px;
+    border-bottom: 1px solid black;
+}
+
+.total-cart {
+    border-top: 1px dashed black;
+}
+
+.close-btn {
+    color: red;
+    cursor: pointer;
+}
