@@ -1,12 +1,13 @@
 import React from 'react'
 
-const Book = ({book}) =>{
-
+const Book = ({book, AddToCart}) =>{
 
     let date = new Date(book.published);
     let convertedDate = `${date.getMonth() + 1}/${date.getFullYear()} `
    
-
+    const AddToCartFunction = () =>{
+        return  AddToCart(book);
+    }
 
     return (
         <div className="col-sm-6 book-item-container">
@@ -19,7 +20,7 @@ const Book = ({book}) =>{
                     <p className="card-text">Published: {convertedDate} by {book.publisher}</p>
                     <p>Pages: ${book.pages}</p>
                     <p>Price: <b>${book.price}</b></p>
-                    <a style={{float:"right"}} href="#" className="btn btn-primary">Add to Cart</a>
+                    <button style={{float:"right"}} onClick={AddToCartFunction} className="btn btn-primary">Add to Cart</button>
                 </div>
             </div>
         </div>
