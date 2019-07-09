@@ -31,7 +31,7 @@ header {
 /* CART */
 
 .cart {
-    /* position: fixed; */
+    position: fixed;
     padding-top: 30px;
 }
 
@@ -47,4 +47,11 @@ header {
 .close-btn {
     color: red;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+    .cart {
+        position: relative;
+        padding-top: 30px;
+    }
 }
