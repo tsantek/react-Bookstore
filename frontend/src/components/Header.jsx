@@ -15,7 +15,7 @@ const Header = ()=>{
                     </div>
 
                     <div className="col-md-4 d-flex align-items-center justify-content-center">
-                          <p className="phone-header"><i class="fas fa-phone"></i> + 480 444 4444</p>  
+                          <p className="phone-header"><i className="fas fa-phone"></i> + 480 444 4444</p>  
                     </div>
 
                     <div className="col-md-4 d-flex align-items-center">
