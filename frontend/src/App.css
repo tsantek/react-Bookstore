@@ -4,16 +4,8 @@ header {
     background-color: #599A08;
 }
 
-.list-navbar-items li {
-    padding-top: 10px;
-    font-size: 15px;
-    list-style: none;
-    padding-right: 15px;
-}
-
-.phone-header {
-    padding-top: 10px;
-    font-size: 15px;
+.list-navbar-items {
+    padding: 10px;
 }
 
 
@@ -54,4 +46,11 @@ header {
         position: relative;
         padding-top: 30px;
     }
+}
+
+
+/* SEARCH */
+
+.search {
+    padding: 20px 0 20px 0;
 }
