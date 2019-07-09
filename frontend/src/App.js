@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Cart from './components/Cart';
 import books from './api/books'
+import Search from './components/Search';
 
 class App extends Component {
 
@@ -24,7 +25,8 @@ class App extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-8">
-            <Main books={this.state.books}  />
+             <Search />
+              <Main books={this.state.books}  />
            </div>
             <div className="col-md-4">
               <Cart />

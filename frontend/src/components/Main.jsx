@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Main =() => {
+import Books from './Books';
+
+
+const Main =({books}) => {
     return ( 
         <div>
-            MAIN
+            <Books books={books} />
         </div>
     );
 }
