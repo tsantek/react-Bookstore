@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Header = ()=>{
+const Header = ({handlUpdateAdmin, adminState})=>{
+    console.log(adminState)
     return (
         <header>
             <div className="container list-navbar-items">
@@ -8,7 +9,7 @@ const Header = ()=>{
                     <h1>BBoks</h1>
                 </div>
                 <div className="admin-login">
-                    <a  href="/" style={{float:'right', marginTop:-20}}>Admin Login</a>
+                    <button onClick={()=>handlUpdateAdmin()}style={{float:'right', marginTop:-40, cursor:"pointer"}} type="button" className="btn btn-light">{adminState ? 'Log Out': 'Admin Login' }</button>
                 </div>
             </div>
         </header>

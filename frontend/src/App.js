@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
@@ -8,7 +9,8 @@ import books from './api/books'
 class App extends Component {
 
   state = {
-    books: []
+    books: [],
+    admin: false
   };
   
  componentDidMount = async() => {
@@ -60,22 +62,32 @@ class App extends Component {
           }
       })
   }
+  handlUpdateAdmin = () =>{
+    this.setState( prevState =>{
+      return{
+        ...prevState,
+        admin: !this.state.admin
+      }
+    })
+  }
+
+
 
   render() { 
     return (
-      <div className="App">
-        <Header />
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8">
-              <Main books={this.state.books} AddToCart={this.handlerAddToCart} />
-           </div>
-            <div className="col-md-4 cart-container-app">
-                <Cart books={this.state.books} handlerRemoveFromCart={this.handlerRemoveFromCart} totalCheckout={this.state.totalCheckout} handlerUpdateQ={this.handlerUpdateQ}/>
+        <div className="App">
+          <Header handlUpdateAdmin={this.handlUpdateAdmin} adminState={this.state.admin} />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8">
+                <Main books={this.state.books} AddToCart={this.handlerAddToCart} adminState={this.state.admin} />
+            </div>
+              <div className="col-md-4 cart-container-app">
+                  <Cart books={this.state.books} handlerRemoveFromCart={this.handlerRemoveFromCart} totalCheckout={this.state.totalCheckout} handlerUpdateQ={this.handlerUpdateQ}/>
+              </div>
             </div>
           </div>
-        </div>
-    </div>
+      </div>
     );
   }
 }

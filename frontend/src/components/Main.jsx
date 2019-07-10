@@ -16,7 +16,6 @@ class Main extends Component {
             }
         })
       }
-
        
     render() {
         let filterd=[];
@@ -29,8 +28,7 @@ class Main extends Component {
             })
         }else{
             filterd = this.props.books;
-        }
-   
+        }   
        return (
         <div>
             <div className="input-group mb-3 search">
