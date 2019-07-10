@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-const Book = ({book, AddToCart}) =>{
-
+class  Book extends Component {
+    render() { 
+    
+    const {book, AddToCart} = this.props;
+    
     let date = new Date(book.published);
     let convertedDate = `${date.getMonth() + 1}/${date.getFullYear()} `
    
@@ -11,14 +14,13 @@ const Book = ({book, AddToCart}) =>{
 
     const styleColor = '#007bff';
 
-
     return (
         <div className="col-sm-6 book-item-container">
             <div className="card">
                 <div className="card-body">
                     <h5 className="card-title">{book.title}</h5>
                     <p className="card-text"><b>{book.subtitle}</b></p>
-                    <p className="card-text">{book.Author}</p>
+                    <p className="card-text">{book.author}</p>
                     <p className="card-text">{book.description}</p>
                     <a href={book.website} target="__blank" className="card-text"><span style={{color:'black'}}>Web:</span> {book.website}</a>
                     <p className="card-text published">Published: {convertedDate} by {book.publisher}</p>
@@ -29,6 +31,8 @@ const Book = ({book, AddToCart}) =>{
             </div>
         </div>
     )
-}
 
-export default Book
+    }
+}
+ 
+export default Book ;

@@ -4,7 +4,6 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Cart from './components/Cart';
 import books from './api/books'
-import Search from './components/Search';
 
 class App extends Component {
 
@@ -24,17 +23,14 @@ class App extends Component {
               ...book,
               total : 0,
           }
-          }),
-          totalCheckout: 0
+          })
         })
       }
       else {
-        // throw error and go to catch block
         throw new Error("Error");
       }
     }catch (e){
       console.log(e)
-      // create msg in state to show error if something is wrong
     }
     }
   
@@ -48,7 +44,6 @@ class App extends Component {
   }
 
   handlerUpdateQ = (num, item) =>{
-  
     this.setState( prevState => {
       return {
           ...prevState,
@@ -58,7 +53,6 @@ class App extends Component {
   }
 
   handlerRemoveFromCart = (id) =>{
-    console.log(id)
     this.setState( prevState => {
       return {
           ...prevState,
@@ -74,7 +68,6 @@ class App extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-8">
-             <Search />
               <Main books={this.state.books} AddToCart={this.handlerAddToCart} />
            </div>
             <div className="col-md-4 cart-container-app">
