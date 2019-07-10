@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Books from './Books';
-// import Search from './Search';
+import Search from './Search';
 
 class Main extends Component {
     constructor(props){
@@ -10,15 +10,16 @@ class Main extends Component {
             search : "",
             btn: 0
              }
-        
-    }
-   
-    handlSearchStateUpdate(value){
-        this.setState({ search : value.target.value})
+    
     }
 
-    handleButtonSelect(e){ 
-        let btnIndex = e.target.value;
+
+   
+    handlSearchStateUpdate = (value) =>{
+        this.setState({ search : value})
+    }
+
+    handleButtonSelect = (btnIndex) =>{ 
         this.setState({
             btn: btnIndex
         })
@@ -38,18 +39,7 @@ class Main extends Component {
 
        return (
         <div>
-
-                <div className="input-group mb-3 search">
-                <div className="input-group-prepend">
-                    <select className="btn btn-outline-secondary dropdown-toggle" name="btn-select" onChange={e => this.handleButtonSelect(e) }>
-                    <option className="dropdown-item" value="0">Book</option>
-                    <option className="dropdown-item" value="1">Author</option>
-                    </select>
-                </div>
-                    <input type="text" className="form-control" placeholder="Search" onChange={(e) => this.handlSearchStateUpdate(e)}/>
-                </div>
-
-                 {/* <Search handlSearchState={this.handlSearchStateUpdate} /> */}
+                 <Search handlSearchState={this.handlSearchStateUpdate} handleButtonSelect={this.handleButtonSelect} />
                  <Books books={searchedBook}  AddToCart={this.props.AddToCart}/>
         </div>
          )

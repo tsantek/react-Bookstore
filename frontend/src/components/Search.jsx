@@ -1,25 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 
+const Search = ({handleButtonSelect, handlSearchState}) =>{
 
-class Search extends Component {
-    render() { 
-
-        const onChangeValue = (e) =>{
-            let value = e.target.value
-            return  this.props.handlSearchState(value)
-        } 
-
-        return (
-            <div className="input-group search">
-                <input type="text" className="form-control" placeholder="Search" onChange={onChangeValue}/>
-                <div className="input-group-append" id="button-addon4">
-                    <button  className="btn btn-outline-secondary" type="button">Search Books</button>
-                    <button className="btn btn-outline-secondary" type="button">Search Authors</button>
-                </div>
-                </div>
-        )
-    }
+const handleButtonSelectSearch = (e)=>{
+    const btnSelected = e.target.value;
+    handleButtonSelect(btnSelected)
 }
- 
 
-export default Search;
+const handlSearchStateUpdateSearch = (e) =>{
+    const searchValue = e.target.value;
+    handlSearchState(searchValue)
+}
+
+
+    return(
+        <div className="input-group mb-3 search">
+                <div className="input-group-prepend">
+                    <select className="btn btn-outline-secondary dropdown-toggle" name="btn-select" onChange={e => handleButtonSelectSearch(e) }>
+                    <option className="dropdown-item" value="0">Book</option>
+                    <option className="dropdown-item" value="1">Author</option>
+                    </select>
+                </div>
+                    <input type="text" className="form-control" placeholder="Search" onChange={(e) => handlSearchStateUpdateSearch(e)}/>
+        </div>
+    )
+}
+
+export default Search
