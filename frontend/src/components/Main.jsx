@@ -8,7 +8,7 @@ class Main extends Component {
              }
 
     handlSearchStateUpdateSearch = (input) => {
-        const str = input.target.value;
+        const str = input.target.value.toLowerCase();
         this.setState(prevState =>{
             return{
                 ...prevState,
@@ -22,7 +22,7 @@ class Main extends Component {
 
         if(this.state.search.length > 0){
             Object.keys(this.props.books).forEach(key => {
-                if(this.props.books[key].title.includes(this.state.search) || this.props.books[key].author.includes(this.state.search)){
+                if(this.props.books[key].title.toLowerCase().includes(this.state.search) || this.props.books[key].author.toLowerCase().includes(this.state.search)){
                    filterd.push(this.props.books[key])
                 }   
             })
