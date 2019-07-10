@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class  Book extends Component {
     render() { 
     
-    const {book, AddToCart} = this.props;
+    const {book, AddToCart, btn} = this.props;
     
     let date = new Date(book.published);
     let convertedDate = `${date.getMonth() + 1}/${date.getFullYear()} `
@@ -16,6 +16,7 @@ class  Book extends Component {
 
     return (
         <div className="col-sm-6 book-item-container">
+            {btn}
             <div className="card">
                 <div className="card-body">
                     <h5 className="card-title">{book.title}</h5>

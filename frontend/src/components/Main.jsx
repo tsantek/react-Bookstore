@@ -1,46 +1,45 @@
 import React, { Component } from 'react';
 
 import Books from './Books';
-import Search from './Search';
 
 class Main extends Component {
-    constructor(props){
-        super(props)
-        this.state = { 
-            search : "",
-            btn: 0
+        state = { 
+            search : ""
              }
-    
-    }
 
-
-   
-    handlSearchStateUpdate = (value) =>{
-        this.setState({ search : value})
-    }
-
-    handleButtonSelect = (btnIndex) =>{ 
-        this.setState({
-            btn: btnIndex
+    handlSearchStateUpdateSearch = (input) => {
+        const str = input.target.value;
+        this.setState(prevState =>{
+            return{
+                ...prevState,
+                search: str
+            }
         })
-    }
+      }
 
-    render() { 
-            let searchedBook;
-            if(this.state.btn == 0){
-                 searchedBook = this.props.books.filter( item => {
-                    return item.title.indexOf(this.state.search) !== -1; 
-                })
-            }else{
-                searchedBook = this.props.books.filter( item => { 
-                    return item.author.indexOf(this.state.search) !== -1; 
-                })
-            } 
+       
+    render() {
+        let filterd=[];
 
+        if(this.state.search.length > 0){
+            Object.keys(this.props.books).forEach(key => {
+                if(this.props.books[key].title.includes(this.state.search)){
+                   filterd.push(this.props.books[key])
+                }
+                if(this.props.books[key].author.includes(this.state.search)){
+                    filterd.push(this.props.books[key])
+                 }
+            })
+        }else{
+            filterd = this.props.books;
+        }
+   
        return (
         <div>
-                 <Search handlSearchState={this.handlSearchStateUpdate} handleButtonSelect={this.handleButtonSelect} />
-                 <Books books={searchedBook}  AddToCart={this.props.AddToCart}/>
+            <div className="input-group mb-3 search">
+                    <input type="text" className="form-control" placeholder="Search" onChange={e => this.handlSearchStateUpdateSearch(e)}/>
+             </div>
+                 <Books books={filterd} btn={this.state.btn} AddToCart={this.props.AddToCart}/>
         </div>
          )
     }

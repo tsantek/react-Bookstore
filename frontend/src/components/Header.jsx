@@ -8,7 +8,7 @@ const Header = ()=>{
                     <h1>BBoks</h1>
                 </div>
                 <div className="admin-login">
-                    <a style={{float:'right', marginTop:-20}}>Admin Login</a>
+                    <a  href="/" style={{float:'right', marginTop:-20}}>Admin Login</a>
                 </div>
             </div>
         </header>
