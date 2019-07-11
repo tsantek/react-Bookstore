@@ -100,7 +100,7 @@ class App extends Component {
         />
         <div className="container">
           <div className="row">
-            <div className="col-md-8">
+            <div className={!this.state.admin ? "col-md-8" : "col-md-12"}>
               <Main
                 books={this.state.books}
                 AddToCart={this.handlerAddToCart}
@@ -108,14 +108,16 @@ class App extends Component {
                 handleDeleteBook={this.handleDeleteBook}
               />
             </div>
-            <div className="col-md-4 cart-container-app">
-              <Cart
-                books={this.state.books}
-                handlerRemoveFromCart={this.handlerRemoveFromCart}
-                totalCheckout={this.state.totalCheckout}
-                handlerUpdateQ={this.handlerUpdateQ}
-              />
-            </div>
+            {!this.state.admin && (
+              <div className="col-md-4 cart-container-app">
+                <Cart
+                  books={this.state.books}
+                  handlerRemoveFromCart={this.handlerRemoveFromCart}
+                  totalCheckout={this.state.totalCheckout}
+                  handlerUpdateQ={this.handlerUpdateQ}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
