@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Cart from "./components/Cart";
 import books from "./api/books";
+import AddNewBook from "./components/AddNewBook";
 
 class App extends Component {
   state = {
@@ -91,6 +92,25 @@ class App extends Component {
     // end of axios
   };
 
+  handleAddNewBook = async newBook => {
+    try {
+      const response = await books.post("/books", newBook);
+      if (response.status === 200) {
+        //proceed...
+        console.log(response.data);
+        this.setState(prevState => {
+          return {
+            books: [...prevState.books, response.data]
+          };
+        });
+      } else {
+        throw new Error("Error");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   render() {
     return (
       <div className="App">
@@ -100,7 +120,7 @@ class App extends Component {
         />
         <div className="container">
           <div className="row">
-            <div className={!this.state.admin ? "col-md-8" : "col-md-12"}>
+            <div className="col-md-8">
               <Main
                 books={this.state.books}
                 AddToCart={this.handlerAddToCart}
@@ -108,7 +128,7 @@ class App extends Component {
                 handleDeleteBook={this.handleDeleteBook}
               />
             </div>
-            {!this.state.admin && (
+            {!this.state.admin ? (
               <div className="col-md-4 cart-container-app">
                 <Cart
                   books={this.state.books}
@@ -117,6 +137,8 @@ class App extends Component {
                   handlerUpdateQ={this.handlerUpdateQ}
                 />
               </div>
+            ) : (
+              <AddNewBook handleAddNewBook={this.handleAddNewBook} />
             )}
           </div>
         </div>
