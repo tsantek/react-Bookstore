@@ -1,7 +1,6 @@
 import React from "react";
 
 const Header = ({ handlUpdateAdmin, adminState }) => {
-  console.log(adminState);
   return (
     <header>
       <div className="container list-navbar-items">

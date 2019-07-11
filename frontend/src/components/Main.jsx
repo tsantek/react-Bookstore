@@ -41,10 +41,13 @@ class Main extends Component {
             onChange={e => this.handlSearchStateUpdateSearch(e)}
           />
         </div>
+        {this.props.adminState}
         <Books
           books={this.state.search ? this.state.filderedBoos : this.props.books}
           btn={this.state.btn}
           AddToCart={this.props.AddToCart}
+          adminState={this.props.adminState}
+          handleDeleteBook={this.props.handleDeleteBook}
         />
       </div>
     );
