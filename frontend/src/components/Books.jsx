@@ -7,9 +7,7 @@ const Books = ({
   btn,
   adminState,
   handleDeleteBook,
-  handleEditBook,
-  handleBookChange,
-  handlePutData
+  handleEditBook
 }) => {
   return (
     <div className="books">
@@ -24,8 +22,6 @@ const Books = ({
               adminState={adminState}
               handleDeleteBook={handleDeleteBook}
               handleEditBook={handleEditBook}
-              handleBookChange={handleBookChange}
-              handlePutData={handlePutData}
             />
           );
         })}
