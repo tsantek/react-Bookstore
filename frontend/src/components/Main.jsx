@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-
 import Books from "./Books";
-
 class Main extends Component {
   state = {
     search: "",
     filderedBoos: []
   };
-
   handlSearchStateUpdateSearch = input => {
     const search = input.target.value.toLowerCase();
 
@@ -29,7 +26,6 @@ class Main extends Component {
     }
     this.setState({ search, filderedBoos });
   };
-
   render() {
     return (
       <div>
