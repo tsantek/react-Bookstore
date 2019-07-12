@@ -45,6 +45,9 @@ class Main extends Component {
           AddToCart={this.props.AddToCart}
           adminState={this.props.adminState}
           handleDeleteBook={this.props.handleDeleteBook}
+          handleEditBook={this.props.handleEditBook}
+          handleBookChange={this.props.handleBookChange}
+          handlePutData={this.props.handlePutData}
         />
       </div>
     );

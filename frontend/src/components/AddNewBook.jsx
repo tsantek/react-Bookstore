@@ -1,20 +1,27 @@
 import React, { Component } from "react";
 
+let msg = "";
+let msgClass = "";
 class AddNewBook extends Component {
   state = {};
 
   onSubmit = e => {
     e.preventDefault();
     this.props.handleAddNewBook(this.state);
+    e.target.reset();
+    msg = "Book Added";
+    msgClass = "alert alert-success";
   };
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
   render() {
     return (
       <div className="add-new-book-form-container">
+        <h4 id="msg" className={msgClass}>
+          {msg}
+        </h4>
         <h4>Add a new Book</h4>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">

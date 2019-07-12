@@ -115,6 +115,59 @@ class App extends Component {
     }
   };
 
+  handleEditBook = id => {
+    this.setState(prevState => {
+      return {
+        books: prevState.books.map(book => {
+          return {
+            ...book,
+            editing: book.id === id
+          };
+        })
+      };
+    });
+  };
+
+  handleBookChange = e => {
+    const newBody = e.target.value;
+    const myName = e.target.name;
+
+    this.setState(prevState => {
+      return {
+        books: prevState.books.map(book => {
+          if (book.editing) {
+            return {
+              ...book,
+              [myName]: newBody
+            };
+          } else {
+            return { ...book };
+          }
+        })
+      };
+    });
+  };
+
+  handlePutData = id => {
+    books
+      .put(`/books/${id}`)
+      .then(
+        this.setState(prevState => {
+          return {
+            books: prevState.books.map(book => {
+              return {
+                ...book,
+                editing: false
+              };
+            })
+          };
+        })
+      )
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
   render() {
     return (
       <div className="App">
@@ -130,6 +183,9 @@ class App extends Component {
                 AddToCart={this.handlerAddToCart}
                 adminState={this.state.admin}
                 handleDeleteBook={this.handleDeleteBook}
+                handleEditBook={this.handleEditBook}
+                handleBookChange={this.handleBookChange}
+                handlePutData={this.handlePutData}
               />
             </div>
             {!this.state.admin ? (
