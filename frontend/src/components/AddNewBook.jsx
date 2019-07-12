@@ -29,13 +29,13 @@ class AddNewBook extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Suitle</label>
+            <label>Subtitle</label>
             <input
               type="text"
-              name="sutitle"
+              name="subtitle"
               className="form-control"
               id="title"
-              placeholder="Enter sutitle"
+              placeholder="Enter subtitile"
               onChange={this.onChange}
             />
           </div>
@@ -120,7 +120,6 @@ class AddNewBook extends Component {
             Submit
           </button>
         </form>
-        <h4>Your Books</h4>
       </div>
     );
   }

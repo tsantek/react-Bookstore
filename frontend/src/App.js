@@ -131,6 +131,7 @@ class App extends Component {
             {!this.state.admin ? (
               <div className="col-md-4 cart-container-app">
                 <Cart
+                  adminState={this.state.admin}
                   books={this.state.books}
                   handlerRemoveFromCart={this.handlerRemoveFromCart}
                   totalCheckout={this.state.totalCheckout}
