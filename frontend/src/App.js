@@ -39,7 +39,11 @@ class App extends Component {
       return {
         books: prevState.books.map(book =>
           book.id === newItem.id
-            ? { ...book, inCart: true, total: parseInt(book.total) + 1 }
+            ? {
+                ...book,
+                inCart: true,
+                total: parseInt(book.total) + 1
+              }
             : book
         )
       };
